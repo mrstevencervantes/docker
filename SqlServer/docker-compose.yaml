@@ -1,0 +1,19 @@
+# https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver15&preserve-view=true&pivots=cs1-bash
+version: '3.9'
+services:
+  db:
+    build:
+      context: /var/home/steven/Documents/Podman/SqlServer
+      dockerfile: /var/home/steven/Documents/Podman/SqlServer/Dockerfile.ms
+    restart: always
+    ports:
+      - "1433:1433"
+    environment:
+      MSSQL_SA_PASSWORD: MyStrongPassword1
+      ACCEPT_EULA: Y
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

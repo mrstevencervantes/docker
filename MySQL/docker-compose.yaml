@@ -1,0 +1,56 @@
+version: "3.9"
+services:
+  workbench:
+    image: lscr.io/linuxserver/mysql-workbench:latest
+    container_name: admin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /path/to/config:/config
+    ports:
+      - 3000:3000
+    cap_add:
+      - IPC_LOCK
+    restart: unless-stopped
+    depends_on:
+      - db
+
+  db:
+    image: mysql
+    container_name: mysql
+    # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
+    # (this is just an example, not intended to be a production configuration)
+    # command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  adminer:
+    container_name: phpadmin
+    image: adminer
+    restart: always
+    environment:
+      - ADMINER_DESIGN='price'
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      - PMA_ARBITRARY=1
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:
