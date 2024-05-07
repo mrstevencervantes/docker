@@ -21,7 +21,11 @@
 				"charliermarsh.ruff",
 				"ms-python.black-formatter",
 				"mechatroner.rainbow-csv",
-				"mongodb.mongodb-vscode"
+				"mongodb.mongodb-vscode",
+				"GitHub.copilot",
+				"GitHub.copilot-chat",
+				"oderwat.indent-rainbow",
+				"prql-lang.prql-vscode"
 			],
 			// Set *default* container specific settings.json values on container create.
 			"settings": {
@@ -32,32 +36,9 @@
 					"editor.formatOnSave": true,
 					"editor.codeActionsOnSave": {
 						"source.fixAll": "explicit"
-					},
-					"editor.defaultFormatter": "ms-python.black-formatter"
+					}
 				},
-				//"sqltools.connections": [
-				//	{
-				//		"name": "Local database",
-				//		"driver": "PostgreSQL",
-				//		"server": "localhost",
-				//		"port": 5432,
-				//		"database": "postgres",
-				//		"username": "admin",
-				//		"password": "LocalPasswordOnly"
-				//	}
-					//,{
-					//	"name": "Azure database",
-					//	"driver": "PostgreSQL",
-					//	"server": "<HOSTNAME>.postgres.database.azure.com",
-					//	"port": 5432,
-					//	"database": "postgres",
-					//	"username": "<USERNAME>",
-					//	"askForPassword": true,
-					//	"pgOptions": {
-					//		"ssl": true
-					//	}
-					//}
-				//],
+				"python.formatting.provider": "black",
 				"files.exclude": {
 					".ruff_cache": true,
 					".pytest_cache": true

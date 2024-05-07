@@ -1,12 +1,16 @@
-import getpass
 import oracledb
+from dotenv import load_env
 
-pw = getpass.getpass("Enter password: ")
+load_dotenv(".env", override=True)
+DBUSER = os.environ["DBUSER"]
+DBPASS = os.environ["DBPASS"]
+DBHOST = os.environ["DBHOST"]
+DBNAME = os.environ["DBNAME"]
 
 connection = oracledb.connect(
-    user="system",
-    password=pw,
-    dsn="localhost/xepdb1")
+    user=DBUSER,
+    password=DBPASS,
+    dsn=f"{DBHOST}/{DBNAME}")
 
 print("Successfully connected to Oracle Database")
 

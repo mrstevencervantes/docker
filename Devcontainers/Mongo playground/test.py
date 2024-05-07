@@ -1,6 +1,18 @@
 from pymongo import MongoClient
+from dotenv import load_dotenv
 
-uri = "mongodb://root:example@mongo:27017"
-client = MongoClient(uri)
+# Connect to the database
+load_dotenv(".env.devcontainer", override=True)
+DBUSER = os.environ["DBUSER"]
+DBPASS = os.environ["DBPASS"]
+DBHOST = os.environ["DBHOST"]
+DBNAME = os.environ["DBNAME"]
 
-print(client.list_database_names())
+URI = f"mongodb://{DBUSER}:{DBPASS}@{DBHOST}:27017"
+CLIENT = MongoClient(URI)
+
+try:
+    print(CLIENT.admin.command("ping"))
+    print("Ping successful")
+except Exception as e:
+    print(e)

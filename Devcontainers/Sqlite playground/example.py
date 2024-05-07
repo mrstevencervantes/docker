@@ -17,7 +17,7 @@ class Customer(Base):
     country_code: Mapped[str] = mapped_column(String(2))
     # add a 1-to-1 relationship to CreditCard
     credit_card: Mapped["CreditCard"] = relationship("CreditCard", uselist=False,
-                                                     back_populates="customer")
+                                                    back_populates="customer")
     # add a 1-to-many relationship to Order
     orders: Mapped[List["Order"]] = relationship("Order", back_populates="customer")
     def __repr__(self):

@@ -1,6 +1,6 @@
 // For format details, see https://aka.ms/devcontainer.json
 {
-	"name": "python-db-copilot",
+	"name": "Python SQLite Playground",
 	"image": "mcr.microsoft.com/devcontainers/python:3.11",
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {}
@@ -15,7 +15,12 @@
 				"ms-python.vscode-pylance",
 				"charliermarsh.ruff",
 				"mtxr.sqltools",
-				"mtxr.sqltools-driver-sqlite"
+				"mtxr.sqltools-driver-sqlite",
+				"mechatroner.rainbow-csv",
+				"oderwat.indent-rainbow",
+				"prql-lang.prql-vscode",
+				"GitHub.copilot",
+				"GitHub.copilot-chat"
 			],
 			// Set *default* container specific settings.json values on container create.
 			"settings": {
@@ -33,7 +38,7 @@
 						"previewLimit": 50,
 						"driver": "SQLite",
 						"name": "database",
-						"database": "my_database.db"
+						"database": "users.db"
 					}
 				],
 				"files.exclude": {
